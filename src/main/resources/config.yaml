@@ -1,0 +1,7 @@
+http:
+  port: "8081"
+  
+sfdc:
+  username: "likhitha@mule.com"
+  password: "@Salesforcelikki7"
+  token: "JUHoTFIVXFQOYx4tcqWDoDirF"
