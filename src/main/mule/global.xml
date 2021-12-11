@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce"
+<mule xmlns:jms="http://www.mulesoft.org/schema/mule/jms"
+	xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce"
 	xmlns:http="http://www.mulesoft.org/schema/mule/http"
-	xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns="http://www.mulesoft.org/schema/mule/core"
-	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+	xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd 
 http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd">
+http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/current/mule-jms.xsd">
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="a31f8ea1-8684-4ac6-8615-66b2e764dae7" >
 		<http:listener-connection host="0.0.0.0" port="${http.port}" />
 	</http:listener-config>
@@ -23,6 +26,17 @@ http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mu
 		<salesforce:basic-connection username="${sfdc.username}" password="${sfdc.password}" securityToken="${sfdc.token}" />
 	</salesforce:sfdc-config>
 	<configuration-properties doc:name="Configuration properties" doc:id="cff6a732-1c36-444b-b68d-58f874c00479" file="config.yaml" />
+	<file:config name="File_Config" doc:name="File Config" doc:id="e3cce36d-8baa-41d6-8b39-5dcc199ca6ef" >
+		<file:connection workingDir="D:\Training Mulesoft\APDevFundamentals4.4_studentFiles_SP_05oct2021\resources" />
+	</file:config>
+	<db:config name="Database_Config" doc:name="Database Config" doc:id="ae76e13c-716d-4801-b69d-22b4c1af18bf" >
+		<db:my-sql-connection host="${db.host}" port="${db.port}" user="${db.user}" password="${db.password}" database="${db.database}" />
+	</db:config>
+	<jms:config name="JMS_Config" doc:name="JMS Config" doc:id="3ef56497-92fa-43ee-90f0-ed1326e45d0a" >
+		<jms:active-mq-connection >
+			<jms:factory-configuration />
+		</jms:active-mq-connection>
+	</jms:config>
 	
 	
 </mule>

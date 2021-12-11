@@ -5,3 +5,10 @@ sfdc:
   username: "likhitha@mule.com"
   password: "@Salesforcelikki7"
   token: "JUHoTFIVXFQOYx4tcqWDoDirF"
+  
+db:
+  host: "mudb.learn.mulesoft.com"
+  port: "3306"
+  user: "mule"
+  password: "mule"
+  database: "training"
